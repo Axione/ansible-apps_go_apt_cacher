@@ -1,0 +1,17 @@
+{{ ansible_managed | comment }}
+
+[Unit]
+Description=go-apt-cacher
+After=network-online.target
+StartLimitInterval=0
+
+[Service]
+Type=simple
+Restart=always
+ExecStart=/usr/local/bin/go-apt-cacher
+ExecReload=/bin/kill -HUP $MAINPID
+SyslogIdentifier=go-apt-cacher
+RestartSec=1
+PrivateTmp=yes
+
+[Install]

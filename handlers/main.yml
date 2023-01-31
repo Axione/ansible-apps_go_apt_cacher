@@ -1,0 +1,5 @@
+---
+- name: "restart go-apt-cacher"
+  ansible.builtin.service:
+    name: "go-apt-cacher"
+    state: "restarted"
