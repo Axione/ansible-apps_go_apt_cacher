@@ -6,6 +6,7 @@
     owner: "{{ go_apt_cacher_user }}"
     group: "{{ go_apt_cacher_group }}"
     mode: '0755'
+  notify: "restart go-apt-cacher"
 
 - name: "Copy configuration"
   ansible.builtin.copy:
@@ -14,6 +15,7 @@
     owner: "{{ go_apt_cacher_user }}"
     group: "{{ go_apt_cacher_group }}"
     mode: '0644'
+  notify: "restart go-apt-cacher"
 
 - name: "Create systemd"
   ansible.builtin.template:
