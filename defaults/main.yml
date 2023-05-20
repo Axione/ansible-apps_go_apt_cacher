@@ -2,6 +2,7 @@
 go_apt_cacher_binary_path: "/usr/local/bin"
 go_apt_cacher_user: "root"
 go_apt_cacher_group: "root"
+go_apt_cacher_storage_path: "/var/spool/go-apt-cacher"
 
 go_apt_cacher_config_path: "/etc/go-apt-cacher.toml"
 go_apt_cacher_config: |
@@ -19,12 +20,12 @@ go_apt_cacher_config: |
 
   # Directory for meta data files.
   # The directory owner must be the same as the process owner of go-apt-cacher.
-  meta_dir = "/var/spool/go-apt-cacher/meta"
+  meta_dir = "{{ go_apt_cacher_storage_path }}/meta"
 
   # Directory for non-meta data files.
   # This directory must be different from meta_dir.
   # The directory owner must be the same as the process owner of go-apt-cacher.
-  cache_dir = "/var/spool/go-apt-cacher/cache"
+  cache_dir = "{{ go_apt_cacher_storage_path }}/cache"
 
   # Capacity for cache_dir.
   # Default: 1 GiB
