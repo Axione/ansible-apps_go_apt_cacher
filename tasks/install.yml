@@ -6,7 +6,7 @@
     owner: "{{ go_apt_cacher_user }}"
     group: "{{ go_apt_cacher_group }}"
     mode: '0755'
-  notify: "restart go-apt-cacher"
+  notify: "Restart go-apt-cacher"
 
 - name: "Copy configuration"
   ansible.builtin.copy:
@@ -15,14 +15,14 @@
     owner: "{{ go_apt_cacher_user }}"
     group: "{{ go_apt_cacher_group }}"
     mode: '0644'
-  notify: "restart go-apt-cacher"
+  notify: "Restart go-apt-cacher"
 
 - name: "Create systemd"
   ansible.builtin.template:
     src: 'go-apt-cacher.service.j2'
     dest: '/etc/systemd/system/go-apt-cacher.service'
     mode: '0640'
-  notify: "restart go-apt-cacher"
+  notify: "Restart go-apt-cacher"
 
 - name: "Enable and Start go-apt-cacher.service"
   ansible.builtin.service:
